@@ -1,0 +1,168 @@
+    /* 1. CSS Variables & Theme Setup (Dark Glassmorphic Palette) */
+:root {
+    --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+    --panel-bg: rgba(30, 41, 59, 0.75);
+    --panel-border: rgba(255, 255, 255, 0.1);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-cyan: #06b6d4;
+    --accent-cyan-hover: #0891b2;
+    --accent-danger: #ef4444;
+    --accent-success: #10b981;
+    --shadow-lux: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    --transition: all 0.25s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-gradient);
+    padding: 20px;
+}
+
+        /* 2. Glassmorphism Card Layout */
+.form-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--panel-bg);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--panel-border);
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: var(--shadow-lux);
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.brand {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-success);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent-success);
+}
+
+.form-title {
+    color: var(--text-main);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.form-subtitle {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-bottom: 20px;
+}
+
+   /* 3. Inputs, Labels & Error Styling */
+.form-group {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--panel-border);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2);
+}
+
+/* Error state applied dynamically by JavaScript */
+.invalid-input {
+    border-color: var(--accent-danger) !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2) !important;
+}
+
+.error-text {
+    color: var(--accent-danger);
+    font-size: 0.78rem;
+    margin-top: 5px;
+    min-height: 1rem;
+    /* Prevents layout shifting when error appears */
+}
+
+   /* 4. Buttons & Feedback Banners */
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: var(--accent-cyan);
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background: var(--accent-cyan-hover);
+    transform: translateY(-2px);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}
+
+.success-banner {
+    display: none;
+    /* Hidden by default */
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid var(--accent-success);
+    color: var(--accent-success);
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 0.88rem;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 480px) {
+    .form-card {
+        padding: 20px;
+    }
+}
